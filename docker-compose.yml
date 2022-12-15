@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  db:
+    container_name: spring_demo_db
+    image: mysql
+    ports:
+      - 13100:3306
+    restart: always
+    volumes:
+      - spring_db_volume:/var/lib/mysql
+#      - ./mysql/config:/etc/mysql/conf.d
+      - ./mysql/config/init.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: spring_demo_db
+      time_zone: UTC
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 3002:80
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+  spring_db_volume:
