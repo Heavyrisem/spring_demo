@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 public class Demo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

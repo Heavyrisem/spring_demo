@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.CreateDemoDto;
+import com.example.demo.dto.UpdateDemoDto;
 import com.example.demo.entity.Demo;
 import com.example.demo.service.DemoService;
 import lombok.AllArgsConstructor;
@@ -25,8 +26,13 @@ public class DemoController {
         return this.demoService.findDemoById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public Demo createDemo(@RequestBody @Valid CreateDemoDto createDemoDto) {
         return this.demoService.createDemo(createDemoDto);
+    }
+
+    @PutMapping("/{id}")
+    public Demo updateDemo(@PathVariable Integer id, @RequestBody @Valid UpdateDemoDto updateDemoDto) {
+        return this.demoService.updateDemo(id, updateDemoDto);
     }
 }
